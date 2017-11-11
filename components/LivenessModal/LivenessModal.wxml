@@ -1,0 +1,16 @@
+<template name="LivenessModal">
+ <view class="modal__mask" hidden="{{ !checking }}" bindtap="__lv_stopChecking">
+   <view class="modal__wrapper modal__liveness" catchtap>
+     <view class="modal__body">
+       <view class="sample">
+         <view class="sample-inner">
+           <image src="{{ action.gif }}" mode="widthFix" />
+         </view>
+       </view>
+       <text wx:if="{{ silent }}" class="sample-tip">请保持脸在屏幕内</text>
+       <text wx:if="{{ !silent }}" class="sample-tip">拍摄视频时请{{ action.description }}</text>
+       <button class="btn__linkface" bindtap="__lv_startRecord">开始录制</button>
+     </view>
+   </view>
+ </view>
+</template>

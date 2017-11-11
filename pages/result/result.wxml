@@ -1,0 +1,7 @@
+<view class="container">
+  <view class="result__chart">
+    <canvas canvas-id="doughnut"></canvas>
+  </view>
+  <view class="result__label {{ labelClass }}"><text>{{ labelText }}</text></view>
+  <button class="btn__linkface" bindtap="reCompare">完成</button>
+</view>

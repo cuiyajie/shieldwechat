@@ -1,0 +1,19 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/compare/compare",
+    "pages/result/result",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundColor":"#252525",
+    "navigationBarBackgroundColor": "#252525",
+    "navigationBarTitleText": "金融Demo",
+    "navigationBarTextStyle":"white"
+  },
+  "networkTimeout":{
+    "request": 10000,
+    "uploadFile": 15000,
+    "downloadFile": 10000
+  }
+}

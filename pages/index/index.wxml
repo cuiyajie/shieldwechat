@@ -1,0 +1,9 @@
+<view class="container tx__c">
+  <view class="section__logo shield"><image src="/assets/img/shieldlogo@2x.png" mode="widthFix"></image></view>
+  <view class="section__logo logo"><image src="/assets/img/linkface@2x.png" mode="widthFix"></image></view>
+  <view class="section__input"><input type="text" placeholder="请输入邀请码" auto-focus maxlength="4" bindinput="auth"></input></view>
+</view>
+<view class="section__contact tx__c">
+  <view class="seperator"><text>or</text></view>
+  <view class="link"><text bindtap="makePhoneCall">联系工作人员，获取邀请码</text></view>
+</view>

@@ -1,0 +1,77 @@
+.modal__liveness {
+  width: 670rpx;
+  height: 777rpx;
+  font-size: 30rpx;
+  padding: 40rpx;
+}
+
+.modal__liveness .modal__body {
+  width: 100%;
+}
+
+.sample,
+.sample-inner {
+  position: relative;
+  height: 400rpx;
+}
+
+.sample:before,
+.sample:after,
+.sample-inner:before,
+.sample-inner:after {
+  content: '';
+  position: absolute;
+  width: 36rpx;
+  height: 36rpx;
+  border-color: #D8D8D8;
+  border-width: 6rpx;
+}
+
+.sample {
+  width: 400rpx;
+  margin: 0 auto;
+}
+
+.sample:before {
+  top: 0;
+  left: 0;
+  border-top-style: solid;
+  border-left-style: solid;
+}
+
+.sample:after {
+  top: 0;
+  right: 0;
+  border-top-style: solid;
+  border-right-style: solid;
+}
+
+.sample-inner:before {
+  bottom: 0;
+  left: 0;
+  border-bottom-style: solid;
+  border-left-style: solid;
+}
+
+.sample-inner:after {
+  bottom: 0;
+  right: 0;
+  border-bottom-style: solid;
+  border-right-style: solid;
+}
+
+.sample image {
+  width: 363rpx;
+  height: 363rpx;
+  margin-top: 18rpx;
+}
+
+.sample-tip {
+  display: block;
+  margin-top: 60rpx;
+  letter-spacing: .4em;
+}
+
+.modal__liveness .btn__linkface {
+  margin-top: 60rpx;
+}

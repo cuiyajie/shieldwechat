@@ -1,0 +1,55 @@
+.result__label {
+  background-color: #000;
+  border-radius: 92rpx;
+  height: 92rpx;
+  line-height: 92rpx;
+  font-size: 33rpx;
+  margin-bottom: 60rpx;
+  text-align: center;
+}
+
+.result__chart {
+  width: 250px;
+  height: 250px;
+  margin: 100rpx auto 60rpx;
+  border-radius: 50%;
+  background-color: #000;
+}
+
+
+
+.result__label.success {
+  color: #63FF8D;
+}
+
+.result__label.fail {
+  color: #FF6441;
+}
+
+.result__chart {
+  position: relative;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.result__chart canvas {
+  width: 220px;
+  height: 220px;
+}
+
+.result__percent {
+  z-index: 200;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.result__percent .percent {
+  font-size: 90px;
+  font-weight: bold;
+  line-height: 120%;
+}

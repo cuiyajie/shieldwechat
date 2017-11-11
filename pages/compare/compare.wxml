@@ -1,0 +1,89 @@
+<import src="../../components/LivenessModal/LivenessModal.wxml" />
+<template is="LivenessModal" data="{{ ...__livenessData }}"></template>
+
+<view class="tab-header {{ blurred ? 'blurred' : '' }}">
+  <view class="tab__child {{ curr === 'image' ? 'active' : '' }}" bindtap="tab" data-tab="image"><text>人脸VS身份证</text></view>
+  <view class="tab__child {{ curr === 'input' ? 'active' : '' }}" bindtap="tab" data-tab="input"><text>人脸VS公安网底图</text></view>
+</view>
+<scroll-view class="compare-container  {{ blurred ? 'blurred' : '' }}" scroll-y>
+  <view hidden="{{ curr !== 'image' }}" class="compare-section">
+    <view class="container">
+      <view class="compare-block {{ idcardImageUrl === '' ? 'bordered' : '' }}" bindtap="uploadIdCard">
+        <view class="text fullfill centered" hidden="{{ idcardImageUrl !== '' }}">
+          <view class="icon"><text class="icon-idcard"></text></view>
+          <view><text>1.上传身份证</text></view>
+        </view>
+        <view class="image" hidden="{{ idcardImageUrl === '' }}">
+          <image src="{{ idcardImageUrl }}" mode="aspectFill" class="{{ idcardImageClass }}"></image>
+        </view>
+      </view>
+      <view class="compare-block {{ idcardImageResult ? '' : 'bordered' }}">
+         <view class="text fullfill centered" bindtap="selectCapture" data-capture="idcardImage" hidden="{{ idcardImageResult }}">
+           <view class="icon"><text class="icon-group"></text></view>
+           <view><text>2.采集人像</text></view>
+         </view>
+         <view class="result fullfill" bindtap="selectCapture" data-capture="idcardImage" hidden="{{ !idcardImageResult }}">
+           <view class="result__image">
+             <image src="{{ idcardImageResult.imagePath }}" mode="aspectFill" class="{{ idcardImageResultClass }}"></image>
+           </view>
+           <view class="result__block {{ idcardImageResult.isLiveness ? 'two' : '' }}">
+             <view wx:if="{{ idcardImageResult.isLiveness }}">
+              <view class="result__icon"><text class="{{ idcardImageResult.passed ? 'icon-success' : 'icon-fail' }}"></text></view>
+              <view class="result__text"><text>前端活体检测{{ idcardImageResult.passed ? '' : '未' }}通过</text></view>
+             </view>
+             <view>
+              <view class="result__icon"><text class="{{ idcardImageResult.hackPassed ? 'icon-success' : 'icon-fail' }}"></text></view>
+              <view class="result__text"><text>后端防hack{{ idcardImageResult.hackPassed ? '' : '未' }}通过</text></view>
+             </view>
+           </view>
+         </view>
+      </view>
+      <button class="btn__linkface {{ imageCanCompare ? '' : 'disabled' }}" bindtap="compareImage">开始比对</button>
+    </view>
+  </view>
+  <view hidden="{{ curr !== 'input' }}" class="compare-section">
+    <view class="container">
+      <view class="compare-block darkbg">
+         <view class="text input fullfill centered">
+           <view><text>1.采集信息</text></view>
+           <view class="input-container"><input type="text" bindinput="bindKeyInput" data-field="name" placeholder="请输入姓名"></input></view>
+           <view class="input-container"><input type="text" bindinput="bindKeyInput" data-field="idNumber" placeholder="请输入身份证号"></input></view>
+         </view>
+      </view>
+      <view class="compare-block {{ idcardTextResult ? '' : 'bordered' }}">
+         <view class="text fullfill centered" bindtap="selectCapture" data-capture="idcardText" hidden="{{ idcardTextResult }}">
+           <view class="icon"><text class="icon-group"></text></view>
+           <view><text>2.采集人像</text></view>
+         </view>
+         <view class="result fullfill" bindtap="selectCapture" data-capture="idcardText" hidden="{{ !idcardTextResult }}">
+           <view class="result__image">
+             <image src="{{ idcardTextResult.imagePath }}" mode="aspectFill" class="{{ idcardTextResultClass }}"></image>
+           </view>
+           <view class="result__block {{ idcardTextResult.isLiveness ? 'two' : '' }}">
+             <view wx:if="{{ idcardTextResult.isLiveness }}">
+              <view class="result__icon"><text class="{{ idcardTextResult.passed ? 'icon-success' : 'icon-fail' }}"></text></view>
+              <view class="result__text"><text>前端活体检测{{ idcardTextResult.passed ? '' : '未' }}通过</text></view>
+             </view>
+             <view>
+              <view class="result__icon"><text class="{{ idcardTextResult.hackPassed ? 'icon-success' : 'icon-fail' }}"></text></view>
+              <view class="result__text"><text>后端防hack{{ idcardTextResult.hackPassed ? '' : '未' }}通过</text></view>
+             </view>
+           </view>
+         </view>
+      </view>
+      <button class="btn__linkface {{ textCanCompare ? '' : 'disabled' }}" bindtap="compareText">开始比对</button>
+    </view>
+  </view>
+</scroll-view>
+<view class="modal__mask" hidden="{{ !loading }}" bindtap="stopLoading">
+  <view class="modal__wrapper modal__loading" catchtap>
+    <view class="modal__body">
+      <view><image src="/assets/img/cloud.gif" class="loading__gif" mode="widthFix"></image></view>
+      <view><text>上传中...</text></view>
+    </view>
+  </view>
+</view>
+<view class="page__ship" hidden="{{ !comparing }}">
+  <view><image src="/assets/img/comparing.gif" modal="widthFix"></image></view>
+  <view><text>比对进行中......</text></view>
+</view>
